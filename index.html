@@ -160,6 +160,409 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
+
+    /* Fix carousel button positioning and prevent overlap */
+.carousel-container {
+  position: relative;
+  padding: 0 60px; /* Add space for buttons */
+}
+
+.carousel-container button[id^="prev-"], 
+.carousel-container button[id^="next-"] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  margin: 0; /* Remove negative margins */
+}
+
+.carousel-container button[id^="prev-"] {
+  left: 0;
+}
+
+.carousel-container button[id^="next-"] {
+  right: 0;
+}
+
+/* Fix mobile menu overlay z-index stacking */
+#mobile-menu-overlay {
+  z-index: 45; /* Ensure it's between menu (50) and content (30) */
+}
+
+/* Improve responsive grid layouts */
+@media (max-width: 767px) {
+  .grid.md\:grid-cols-\[repeat$$2\,minmax\(0px\,1fr$$\)\] {
+    gap: 1rem; /* Consistent mobile spacing */
+  }
+  
+  .grid.md\:grid-cols-\[repeat$$3\,minmax\(0px\,1fr$$\)\] {
+    gap: 1rem;
+  }
+}
+
+/* Fix flexbox alignment inconsistencies */
+.flex.flex-col.md\:flex-row {
+  align-items: stretch; /* Ensure consistent height */
+}
+
+/* Prevent horizontal overflow from negative margins */
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+/* Fix container max-width consistency */
+.max-w-none.md\:max-w-screen-xl {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .max-w-none.md\:max-w-screen-xl {
+    max-width: 1280px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Fix dropdown menu positioning */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Improve mobile navigation spacing */
+@media (max-width: 767px) {
+  .mobile-menu nav {
+    padding-top: 1rem;
+  }
+  
+  .mobile-menu .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding-left: 1rem;
+  }
+}
+
+/* Fix card layout consistency */
+.grid > div[class*="bg-"] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ensure proper text wrapping */
+.text-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fix animation performance */
+.animate-slide-in-left,
+.animate-slide-in-right,
+.animate-bounce-in,
+.animate-float,
+.animate-pulse-glow {
+  will-change: transform, opacity;
+}
+
+/* Improve focus states for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Fix sticky header behavior */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+
+
+/* Advanced mouse hover effects matching UI color scheme */
+
+/* Enhanced Button Hover Effects */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgb(183, 127, 14), rgb(255, 171, 8));
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255, 171, 8, 0.4), 0 0 20px rgba(255, 171, 8, 0.3);
+}
+
+/* Card Hover Effects */
+.card-hover {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 171, 8, 0.3), rgba(16, 185, 129, 0.3));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 171, 8, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Feature Box Hover Effects */
+.feature-box {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.feature-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 171, 8, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: inherit;
+}
+
+.feature-box:hover::after {
+  opacity: 1;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 171, 8, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Text Hover Effects */
+.text-glow:hover {
+  background: linear-gradient(90deg, rgb(250, 232, 196), rgb(255, 171, 8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(255, 171, 8, 0.5));
+  transition: all 0.3s ease;
+}
+
+/* Navigation Link Hover */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(255, 171, 8), rgb(16, 185, 129));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: rgb(255, 171, 8);
+  text-shadow: 0 0 10px rgba(255, 171, 8, 0.3);
+}
+
+/* Icon Hover Effects */
+.icon-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-hover:hover {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 15px rgba(255, 171, 8, 0.6));
+}
+
+/* Testimonial Card Hover */
+.testimonial-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Carousel Button Hover */
+.carousel-btn {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 171, 8, 0.3), rgba(16, 185, 129, 0.3));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-btn:hover::before {
+  opacity: 1;
+}
+
+.carousel-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 171, 8, 0.4);
+}
+
+/* FAQ Item Hover */
+.faq-item {
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.faq-item:hover {
+  border-left-color: rgb(255, 171, 8);
+  background: rgba(255, 171, 8, 0.05);
+  transform: translateX(5px);
+}
+
+/* Floating Animation for Decorative Elements */
+@keyframes float-glow {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    filter: blur(20px) brightness(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+    filter: blur(25px) brightness(1.2);
+  }
+}
+
+.float-glow:hover {
+  animation: float-glow 3s ease-in-out infinite;
+}
+
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 171, 8, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Magnetic Hover Effect */
+.magnetic {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic:hover {
+  transform: translate(var(--mouse-x, 0), var(--mouse-y, 0)) scale(1.05);
+}
+
+/* Gradient Border Animation */
+@keyframes gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(45deg, rgba(255, 171, 8, 0.3), rgba(16, 185, 129, 0.3), rgba(255, 171, 8, 0.3));
+  background-size: 200% 200%;
+  animation: gradient-border 3s ease infinite;
+  padding: 2px;
+  border-radius: inherit;
+}
+
+.gradient-border:hover {
+  animation-duration: 1s;
+}
+
   </style>
 </head>
 <body class="text-[oklch(0.985_0_0)] text-base not-italic normal-nums font-normal accent-auto bg-[oklch(0.1411_0.0018_17.37)] box-border block tracking-[normal] leading-6 list-outside list-disc outline-[oklab(0.556_0_0_/_0.5)] overflow-x-hidden overflow-y-auto text-start indent-[0px] normal-case visible border-separate font-dm_sans">
@@ -170,7 +573,7 @@
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full w-80 bg-gray-950 z-50 p-6">
   <div class="flex justify-between items-center mb-8">
-    <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="w-12 h-auto" />
+    <img alt="Crypto Bureau Logo" src="images/crypto-bureau-logo.7636489a.svg" class="w-12 h-auto" />
     <button id="close-mobile-menu" class="text-white text-2xl">&times;</button>
   </div>
   <nav class="space-y-4">
@@ -224,7 +627,7 @@
     <div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2">
       <div class="items-center box-border gap-x-6 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-6">
         <a href="/" class="relative text-[oklch(0.922_0_0)] box-border block outline-[oklab(0.556_0_0_/_0.5)] z-20 hover-scale">
-          <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
+          <img alt="Crypto Bureau Logo" src="images/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
         </a>
       </div>
     </div>
@@ -235,7 +638,7 @@
           <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
             <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
               Market Research & Analysis
-              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+              <img src="images/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
             </button>
             <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
               <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Daily Analysis</a>
@@ -246,7 +649,7 @@
           <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
             <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
               Crypto Bureau Academy
-              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+              <img src="images/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
             </button>
             <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
               <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Essential Education</a>
@@ -266,7 +669,7 @@
           <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
             <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
               About Us
-              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+              <img src="images/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
             </button>
             <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
               <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Our Team</a>
@@ -281,7 +684,7 @@
     <div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2">
       <a href="#" class="text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] box-border gap-x-1.5 flex shrink-0 h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1.5 text-nowrap px-3 rounded-lg hover-glow hover-scale">Join the Waitlist</a>
       <button type="button" id="mobile-menu-btn" class="text-sm font-medium items-center bg-transparent gap-x-2 flex shrink-0 h-8 justify-center leading-5 min-h-[auto] min-w-[auto] outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-8 p-0 rounded-lg md:hidden md:min-h-0 md:min-w-0">
-        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-2.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4" />
+        <img src="images/icon-2.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4" />
       </button>
     </div>
   </div>
@@ -289,37 +692,124 @@
 
 <main class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
   <!-- Hero Section -->
-  <section class="relative box-border min-h-[900px] outline-[oklab(0.556_0_0_/_0.5)] px-4 py-16 animate-on-scroll">
+<section class="relative box-border min-h-[900px] outline-[oklab(0.556_0_0_/_0.5)] px-4 py-16 animate-on-scroll animate">
     <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full z-20 mx-auto md:max-w-screen-xl">
+      <!-- Added typing effect to main heading -->
       <h1 class="text-2xl font-semibold box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] uppercase md:text-6xl md:leading-[75px] animate-slide-up">
-        Welcome to
-        <span class="text-2xl italic bg-clip-text bg-[linear-gradient(90.14deg,rgb(250,232,196)_-6.04%,rgb(255,171,8)_72.81%)] box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] md:text-6xl md:leading-[75px] animate-float">
-          Crypto <span class="text-2xl box-border inline-block leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] w-2 md:text-6xl md:hidden md:leading-[75px]"></span> Bureau,
-        </span>
-        Your Gateway to Mastering the Crypto Market
+        <span id="typing-text" class="inline-block"></span>
+        <span id="typing-cursor" class="inline-block w-1 bg-white animate-pulse ml-1">|</span>
       </h1>
+      
       <div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-4 md:grid-cols-[repeat(2,minmax(0px,1fr))]">
         <div class="text-[oklab(0.985_0_0_/_0.8)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] md:text-base md:leading-[26px] animate-slide-in-left">
-          At Crypto Bureau, we're more than just a research lab—we're your strategic partner, dedicated to empowering your crypto journey through disciplined strategies, expert analyst insights, and the vibrant, exclusive Xlab Community.
-          <button class="text-emerald-400 text-sm font-medium bg-transparent leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] text-center underline p-0 md:text-base md:leading-[26px] hover:text-emerald-300 transition-colors">Learn More</button>
+          <div id="hero-description">
+            At Crypto Bureau, we're more than just a research lab—we're your strategic partner, dedicated to empowering your crypto journey through disciplined strategies, expert analyst insights, and the vibrant, exclusive Xlab Community.
+          </div>
+          
+          <!-- Added expandable content section -->
+          <div id="expanded-content" class="mt-4 opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <p class="mb-3">
+              Our team of seasoned analysts brings over 7 years of combined experience in cryptocurrency markets, blockchain technology, and financial analysis. We've weathered multiple market cycles and understand what it takes to succeed in this volatile landscape.
+            </p>
+            <p class="mb-3">
+              What sets us apart is our commitment to education and community. We don't just provide signals or tips—we teach you the fundamental skills needed to become an independent, successful crypto investor. Our comprehensive approach covers:
+            </p>
+            <ul class="list-disc list-inside mb-3 space-y-1">
+              <li>Technical analysis and chart reading</li>
+              <li>Risk management strategies</li>
+              <li>Market psychology and sentiment analysis</li>
+              <li>Portfolio diversification techniques</li>
+              <li>DeFi protocols and yield farming</li>
+            </ul>
+            <p>
+              Join thousands of members who have transformed their crypto journey with our proven methodologies and supportive community environment.
+            </p>
+          </div>
+          
+          <!-- Enhanced Learn More button with expand/collapse functionality -->
+          <button id="learn-more-btn" class="text-emerald-400 text-sm font-medium bg-transparent leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] text-center underline p-0 md:text-base md:leading-[26px] hover:text-emerald-300 transition-all duration-300 transform hover:scale-105 mt-2 block">
+            <span id="learn-more-text">Learn More</span>
+            <svg id="learn-more-arrow" class="inline-block w-4 h-4 ml-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
         </div>
+        
         <div class="[align-items:normal] box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] pt-10 md:items-center md:pt-20 animate-slide-in-right">
-          <p class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-start md:text-center">
-            Unlock Expert Insights, Elevate Your Strategy, and Navigate<br class="box-border hidden outline-[oklab(0.556_0_0_/_0.5)] text-start md:block md:text-center" /> the Crypto Market with Confidence
+          <!-- Enhanced subtitle with subtle animation -->
+          <p class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-start md:text-center transform transition-all duration-300 hover:scale-105">
+            Unlock Expert Insights, Elevate Your Strategy, and Navigate<br class="box-border hidden outline-[oklab(0.556_0_0_/_0.5)] text-start md:block md:text-center"> the Crypto Market with Confidence
           </p>
-          <button class="text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-full mt-6 mx-0 px-3 py-2 rounded-lg md:w-80 md:mx-auto hover-glow hover-scale animate-pulse-glow">
+          
+          <!-- Enhanced CTA button with improved hover effects -->
+          <button class="text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-full mt-6 mx-0 px-3 py-2 rounded-lg md:w-80 md:mx-auto hover-glow hover-scale animate-pulse-glow transition-all duration-300 transform hover:shadow-2xl">
             Explore Membership 
-            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-3.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4" />
+            <img src="images/icon-3.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4 transition-transform duration-300 group-hover:translate-x-1">
           </button>
         </div>
       </div>
     </div>
-    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[225px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-2/4 animate-float"></div>
+    
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[225px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-2/4 animate-float" style="transform: translateY(0px);"></div>
     <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 -left-48 bottom-0 md:block"></div>
     <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 -right-32 top-0 md:block"></div>
     <div class="absolute bg-emerald-600/90 box-border hidden blur-[500px] h-[394.73px] left-[-253px] outline-[oklab(0.556_0_0_/_0.5)] top-[-79px] transform-none w-[409.84px] z-10 md:block md:rotate-[-37.3899784760389deg]"></div>
-  </section>
+</section>
 
+<!-- Added JavaScript for typing effect and expandable content -->
+<script>
+// Typing effect for hero heading
+document.addEventListener('DOMContentLoaded', function() {
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.getElementById('typing-cursor');
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    const expandedContent = document.getElementById('expanded-content');
+    const learnMoreTextSpan = document.getElementById('learn-more-text');
+    const learnMoreArrow = document.getElementById('learn-more-arrow');
+    
+    const fullText = "Welcome to Crypto Bureau, Your Gateway to Mastering the Crypto Market";
+    let currentIndex = 0;
+    let isExpanded = false;
+    
+    // Typing animation
+    function typeText() {
+        if (currentIndex < fullText.length) {
+            typingText.textContent = fullText.slice(0, currentIndex + 1);
+            currentIndex++;
+            setTimeout(typeText, 50); // Adjust speed here
+        } else {
+            // Hide cursor after typing is complete
+            setTimeout(() => {
+                cursor.style.display = 'none';
+            }, 1000);
+        }
+    }
+    
+    // Start typing effect after a short delay
+    setTimeout(typeText, 500);
+    
+    // Learn More button functionality
+    learnMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (!isExpanded) {
+            // Expand content
+            expandedContent.style.maxHeight = expandedContent.scrollHeight + 'px';
+            expandedContent.style.opacity = '1';
+            learnMoreTextSpan.textContent = 'Show Less';
+            learnMoreArrow.style.transform = 'rotate(180deg)';
+            isExpanded = true;
+        } else {
+            // Collapse content
+            expandedContent.style.maxHeight = '0';
+            expandedContent.style.opacity = '0';
+            learnMoreTextSpan.textContent = 'Learn More';
+            learnMoreArrow.style.transform = 'rotate(0deg)';
+            isExpanded = false;
+        }
+    });
+});
+</script>
   <section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] px-4 py-10 animate-on-scroll"><div class="box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><h2 class="text-2xl font-semibold box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize md:text-5xl md:leading-[60px]">The Adoption Race Has Started</h2>
 <div class="text-[oklab(0.985_0_0_/_0.8)] text-sm box-border leading-[22.75px] max-w-screen-lg outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize mt-3 mx-auto md:text-base md:leading-[26px]">The crypto adoption race in 2025 is accelerating rapidly as institutions, governments, and consumers embrace digital assets. Bitcoin has soared past $120K, driving interest from major asset managers and prompting a surge in corporate treasuries holding crypto.<button class="text-emerald-400 text-sm font-medium bg-transparent leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] underline normal-case p-0 md:text-base md:leading-[26px]">Learn More</button>
 </div>
@@ -334,7 +824,7 @@
 <div class="items-center box-border flex justify-between outline-[oklab(0.556_0_0_/_0.5)] mb-6"><span class="text-2xl font-semibold box-border block leading-8 outline-[oklab(0.556_0_0_/_0.5)]">approx. 7.84%</span>
 <span class="text-2xl font-semibold box-border block leading-8 outline-[oklab(0.556_0_0_/_0.5)]">approx. 231.81%</span>
 </div>
-<img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/4.png" class="text-transparent aspect-[auto_563_/_121] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[563px]" />
+<img alt="" src="images/4.png" class="text-transparent aspect-[auto_563_/_121] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[563px]" />
 </div>
 <div class="bg-zinc-900 shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_4px_6px_-1px,rgba(0,0,0,0.1)_0px_2px_4px_-2px] box-border outline-[oklab(0.556_0_0_/_0.5)] p-6 rounded-[14px]"><h3 class="text-lg font-semibold box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-6">Number Of Crypto User Worldwide</h3>
 <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-6"><div class="text-[oklab(0.985_0_0_/_0.7)] text-xs box-border leading-4 outline-[oklab(0.556_0_0_/_0.5)] mb-1">2020</div>
@@ -364,7 +854,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-4.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
+                <img src="images/icon-4.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -378,7 +868,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-5.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+                <img src="images/icon-5.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -392,7 +882,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-6.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
+                <img src="images/icon-6.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -406,7 +896,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-7.svg" alt="Icon" class="box-border h-[73px] outline-[oklab(0.556_0_0_/_0.5)] w-[45px]" />
+                <img src="images/icon-7.svg" alt="Icon" class="box-border h-[73px] outline-[oklab(0.556_0_0_/_0.5)] w-[45px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -420,7 +910,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-8.svg" alt="Icon" class="box-border h-[83px] outline-[oklab(0.556_0_0_/_0.5)] w-[65px]" />
+                <img src="images/icon-8.svg" alt="Icon" class="box-border h-[83px] outline-[oklab(0.556_0_0_/_0.5)] w-[65px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -434,7 +924,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-9.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+                <img src="images/icon-9.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -448,7 +938,7 @@
           <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
             <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
               <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-10.svg" alt="Icon" class="box-border h-[79px] outline-[oklab(0.556_0_0_/_0.5)] w-[77px]" />
+                <img src="images/icon-10.svg" alt="Icon" class="box-border h-[79px] outline-[oklab(0.556_0_0_/_0.5)] w-[77px]" />
               </span>
             </div>
             <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
@@ -506,7 +996,7 @@
 <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-40 top-1/4 md:block"></div>
 <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-medium box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize md:text-5xl md:leading-[48px]">What is the concept behind crypto Bureau</h4>
 </div>
-<div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-16 px-4 md:grid-cols-[repeat(3,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-11.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
+<div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-16 px-4 md:grid-cols-[repeat(3,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-11.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Clear and User-Friendly Pathway</h5>
@@ -514,7 +1004,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-12.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-12.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Building Discipline and Mastery</h5>
@@ -522,7 +1012,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-13.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-13.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Expert Market Analysis and Actionable Insights</h5>
@@ -530,7 +1020,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border col-end-auto col-start-auto max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full border mx-0 px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] md:col-end-[span_3] md:col-start-[span_3] md:max-w-[415px] md:mx-auto"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-14.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border col-end-auto col-start-auto max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full border mx-0 px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] md:col-end-[span_3] md:col-start-[span_3] md:max-w-[415px] md:mx-auto"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-14.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">One Community</h5>
@@ -567,93 +1057,172 @@
 </div>
 </section>
 
-<section id="carousel-1"  class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
-<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
-<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
-<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-4 md:text-5xl md:leading-[62.4px]">Introducing Crypto Bureau Membership</h4>
-<p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] mt-4 mb-8">Unlock exclusive insights and actionable strategies crafted by our seasoned crypto analysts. Crypto Bureau Membership is your gateway to comprehensive market intelligence, designed to elevate your investment decisions and amplify your crypto portfolio&#39;s potential.</p>
-<h5 class="text-3xl font-medium box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-6 md:text-4xl md:leading-[46.8px]">Feature List</h5>
-<div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row"><div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full"><div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full"><div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20"><button id="prev-1" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
-</button>
-<button id="next-1" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
-</button>
-</div>
-<div id="track-1" class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] translate-x-[-1404px] -ml-2 md:translate-x-[-632px] md:-ml-4"><div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-17.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[54px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Research &amp; Analysis</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Expertly curated insights, deep-dive analyses, and comprehensive reports to keep you ahead of market trends.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-18.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Direction</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Clear, actionable guidance to navigate market fluctuations confidently, maximizing your investment opportunities.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-19.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Real-Time Market Updates</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Stay informed with timely, relevant market movements delivered directly by our expert analysts, ensuring you&#39;re always a step ahead.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-20.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[39px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Exclusive Airdrop Reports</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Gain early access to vetted, high-value airdrops, handpicked by our analysts for maximum potential rewards.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-21.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[49px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Altcoin Deep Dives</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Receive detailed analysis and expert perspectives on promising altcoins, helping you spot hidden opportunities before the market does.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-22.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Potential Projects</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Discover emerging crypto projects carefully vetted for long-term growth potential, enabling strategic early investments.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-23.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[43px]" />
-</span>
-</div>
-<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Top Picks from Analysts</h5>
-<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Get direct access to our analysts&#39; top investment picks, showcasing assets with strong fundamentals and significant upside potential.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="carousel-1" class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll animate">
+  <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+  <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+  <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+  
+  <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl">
+    <h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-4 md:text-5xl md:leading-[62.4px]">Introducing Crypto Bureau Membership</h4>
+    <p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] mt-4 mb-8">Unlock exclusive insights and actionable strategies crafted by our seasoned crypto analysts. Crypto Bureau Membership is your gateway to comprehensive market intelligence, designed to elevate your investment decisions and amplify your crypto portfolio's potential.</p>
+    <h5 class="text-3xl font-medium box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-6 md:text-4xl md:leading-[46.8px]">Feature List</h5>
+    
+    <div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row">
+      <div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full">
+        <div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <!-- Navigation Buttons -->
+          <div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20">
+            <button id="prev-1" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4 hover:bg-[oklab(1_0_0_/_0.1)] transition-colors cursor-pointer" style="opacity: 1; cursor: not-allowed;">
+              <img src="images/icon-15.svg" alt="Previous" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5">
+            </button>
+            <button id="next-1" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4 hover:bg-[oklab(1_0_0_/_0.1)] transition-colors cursor-pointer" style="opacity: 0.5; cursor: pointer;">
+              <img src="images/icon-16.svg" alt="Next" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5">
+            </button>
+          </div>
+          
+          <!-- Carousel Track -->
+          <div id="track-1" class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+            <div class="carousel-track-1 box-border flex outline-[oklab(0.556_0_0_/_0.5)] transition-transform duration-500 ease-in-out -ml-2 md:-ml-4" style="transform: translateX(-75%); transition: transform 0.3s ease-in-out;">
+              
+              <!-- Feature Card 1 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-17.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[54px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Research &amp; Analysis</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Expertly curated insights, deep-dive analyses, and comprehensive reports to keep you ahead of market trends.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 2 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-18.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Direction</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Clear, actionable guidance to navigate market fluctuations confidently, maximizing your investment opportunities.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 3 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-19.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Real-Time Market Updates</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Stay informed with timely, relevant market movements delivered directly by our expert analysts, ensuring you're always a step ahead.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 4 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-20.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[39px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Exclusive Airdrop Reports</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Gain early access to vetted, high-value airdrops, handpicked by our analysts for maximum potential rewards.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 5 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-21.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[49px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Altcoin Deep Dives</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Receive detailed analysis and expert perspectives on promising altcoins, helping you spot hidden opportunities before the market does.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 6 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-22.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Potential Projects</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Discover emerging crypto projects carefully vetted for long-term growth potential, enabling strategic early investments.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature Card 7 -->
+              <div role="group" class="feature-card box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4">
+                <div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2">
+                    <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center">
+                      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+                        <span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]">
+                          <img src="images/icon-23.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[43px]">
+                        </span>
+                      </div>
+                      <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+                        <h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Top Picks from Analysts</h5>
+                        <p class="description text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 transition-all duration-300 md:opacity-0 md:transform md:translate-y-2">Get direct access to our analysts' top investment picks, showcasing assets with strong fundamentals and significant upside potential.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="carousel-2" class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] py-10 md:py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
 <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
@@ -662,12 +1231,12 @@
 <h6 class="text-xl font-medium box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)]">-Your Comprehensive Crypto Community For Both Traders and investors</h6>
 <p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] mt-4 mb-8">Unlock exclusive insights and actionable strategies crafted by our seasoned crypto analysts. Crypto Bureau Membership is your gateway to comprehensive market intelligence, designed to elevate your investment decisions and amplify your crypto portfolio&#39;s potential.</p>
 <h5 class="text-3xl font-medium box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-6 md:text-4xl md:leading-[46.8px]">Feature List</h5>
-<div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row"><div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full"><div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full"><div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20"><button id="prev-2" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+<div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row"><div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full"><div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full"><div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20"><button id="prev-2" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4"><img src="images/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
 </button>
-<button id="next-2" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+<button id="next-2" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4"><img src="images/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
 </button>
 </div>
-<div  id="track-2" class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden"><div class="items-stretch box-border flex h-full outline-[oklab(0.556_0_0_/_0.5)] translate-x-[-1755px] -ml-2 md:translate-x-[-632px] md:-ml-4"><div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-24.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div  id="track-2" class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden"><div class="items-stretch box-border flex h-full outline-[oklab(0.556_0_0_/_0.5)] translate-x-[-1755px] -ml-2 md:translate-x-[-632px] md:-ml-4"><div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-24.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Real-Time Expert Trading Ideas</h5>
@@ -677,7 +1246,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-25.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-25.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Swing Trading Setups</h5>
@@ -687,7 +1256,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-26.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-26.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Building Discipline and Mastery</h5>
@@ -697,7 +1266,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-27.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-27.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Weekly In-Depth Market Analysis</h5>
@@ -707,7 +1276,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-28.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-28.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">On-Chain Analysis</h5>
@@ -717,7 +1286,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-29.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-29.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Proven Risk Management Frameworks</h5>
@@ -727,7 +1296,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-30.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-30.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Interactive Community Engagement</h5>
@@ -737,7 +1306,7 @@
 </div>
 </div>
 </div>
-<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-31.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-31.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
 </span>
 </div>
 <div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Live Alerts &amp; Notifications</h5>
@@ -759,7 +1328,7 @@
 <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
 <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
 <div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] mx-auto"><h2 class="text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center mb-10">Long Term Investment Picks Results</h2>
-<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-10"><img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/5.png" class="text-transparent aspect-[auto_1440_/_409] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-full" />
+<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-10"><img alt="" src="images/5.png" class="text-transparent aspect-[auto_1440_/_409] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-full" />
 </div>
 </div>
 </section>
@@ -769,7 +1338,7 @@
 <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">Monthly Xlab Performance Reports</h4>
 <p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Explore our detailed monthly reports showcasing performance reviews, results from trade ideas, and in-depth analyses from our expert analyst team. Easily navigate from month to month, allowing transparent insights into our consistent results and successful strategies.</p>
 </div>
-<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-16"><img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/6.png" class="text-transparent aspect-[auto_1320_/_748] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[1320px]" />
+<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-16"><img alt="" src="images/6.png" class="text-transparent aspect-[auto_1320_/_748] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[1320px]" />
 </div>
 </div>
 </section>
@@ -779,7 +1348,7 @@
 <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">The Crypto Bureau Difference</h4>
 <p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Discover what sets us apart—practical education, sharp market insights, a thriving community, and a commitment to long-term crypto success.</p>
 </div>
-<div class="box-border gap-x-6 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 mt-16 md:grid-cols-[repeat(4,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-32.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+<div class="box-border gap-x-6 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 mt-16 md:grid-cols-[repeat(4,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-32.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Concise Market Insights</h5>
@@ -787,7 +1356,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-33.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-33.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Focused Educational Resources</h5>
@@ -795,7 +1364,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-34.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-34.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Community-Driven Growth</h5>
@@ -803,7 +1372,7 @@
 </div>
 </div>
 </div>
-<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-35.svg" alt="Icon" class="box-border h-[70px] outline-[oklab(0.556_0_0_/_0.5)] w-[73px]" />
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-35.svg" alt="Icon" class="box-border h-[70px] outline-[oklab(0.556_0_0_/_0.5)] w-[73px]" />
 </span>
 </div>
 <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Commitment to Long-Term Success</h5>
@@ -860,7 +1429,7 @@
 <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mt-16"><div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-[oklab(0.63716_0.0295808_0.126768_/_0.3)] box-border hidden h-[600px] outline-[oklab(0.556_0_0_/_0.5)] w-px z-30 left-2/4 top-[108px] md:block"></div>
 <div class="absolute box-border hidden h-24 outline-[oklab(0.556_0_0_/_0.5)] w-[69%] pt-0.5 px-0.5 rounded-t-[50px] border-l border-r border-t border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.3)] left-2/4 top-16 md:block"><div class="box-border h-full outline-[oklab(0.556_0_0_/_0.5)] w-full rounded-t-3xl"></div>
 </div>
-<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] z-20 mt-10"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] border-[oklab(0.76655_-0.125209_0.0272859_/_0.2)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]"><div class="items-center bg-[linear-gradient(in_oklab,rgb(0,0,0)_0px,rgb(1,44,30)_50%,rgb(1,82,55)_100%)] box-border flex h-[88px] justify-center outline-[oklab(0.556_0_0_/_0.5)] w-[88px] mx-auto p-2.5 rounded-[3.35544e+07px]"><img alt="Crypto Bureau logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[76px]" />
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] z-20 mt-10"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] border-[oklab(0.76655_-0.125209_0.0272859_/_0.2)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]"><div class="items-center bg-[linear-gradient(in_oklab,rgb(0,0,0)_0px,rgb(1,44,30)_50%,rgb(1,82,55)_100%)] box-border flex h-[88px] justify-center outline-[oklab(0.556_0_0_/_0.5)] w-[88px] mx-auto p-2.5 rounded-[3.35544e+07px]"><img alt="Crypto Bureau logo" src="images/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[76px]" />
 </div>
 </div>
 </div>
@@ -919,16 +1488,16 @@
             <div class="items-center box-border flex flex-col h-full justify-center outline-[oklab(0.556_0_0_/_0.5)]">
               <div class="text-white text-6xl font-bold box-border leading-[60px] outline-[oklab(0.556_0_0_/_0.5)] mb-2 gradient-text">4.98</div>
               <div class="box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mb-4">
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
               </div>
               <div class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">156 VERIFIED REVIEWS</div>
               <button class="text-white font-semibold items-center bg-transparent bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] flex outline-[oklab(0.556_0_0_/_0.5)] mt-6 px-6 py-2 rounded-[10px] hover-scale hover-glow">
                 View More 
-                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-37.svg" alt="Icon" class="box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="images/icon-37.svg" alt="Icon" class="box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
               </button>
             </div>
           </div>
@@ -940,10 +1509,10 @@
         <div class="relative box-border hidden min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-full md:block md:min-h-[auto] md:min-w-[auto]">
           <div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-20">
             <button id="testimonials-prev" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-14 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4 md:min-h-[auto] md:min-w-[auto] hover-scale">
-              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+              <img src="images/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
             </button>
             <button id="testimonials-next" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4 md:min-h-[auto] md:min-w-[auto] hover-scale">
-              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+              <img src="images/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
             </button>
           </div>
           <div class="carousel-container box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
@@ -954,7 +1523,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Zabran</h5>
@@ -962,11 +1531,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The team behind this platform is incredibly active and engaged with the community. They don't just provide insights - they genuinely support and guide members, making sure everyone benefits. You can tell they put in real effort!</p>
                   </div>
@@ -978,7 +1547,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Irata</h5>
@@ -986,11 +1555,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">It's rare to find a platform where the team is as involved as they are here. They interact with members daily, answer questions, and make sure no one feels left behind. You can tell they're passionate about what they do!</p>
                   </div>
@@ -1002,7 +1571,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Tosmit</h5>
@@ -1010,11 +1579,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Unlike many platforms that feel distant, this one stands out with its transparency. The leadership is upfront about everything, always communicating and ensuring members feel valued and informed. A refreshing experience!</p>
                   </div>
@@ -1026,7 +1595,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Marcus</h5>
@@ -1034,11 +1603,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The structured approach to trading here is game-changing. Monthly performance reports keep everything transparent, and the disciplined methods have significantly improved my trading results. Highly recommend!</p>
                   </div>
@@ -1050,7 +1619,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Sarah</h5>
@@ -1058,11 +1627,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">What sets this community apart is the genuine commitment to member success. The insights are actionable, the support is constant, and the results speak for themselves. Best investment I've made in my trading journey.</p>
                   </div>
@@ -1074,7 +1643,7 @@
                   <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
                     <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
                       <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
-                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                        <img src="images/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
                       </div>
                       <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
                         <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Alex</h5>
@@ -1082,11 +1651,11 @@
                       </div>
                     </div>
                     <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
-                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="images/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
                     </div>
                     <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The transparency and honesty here is unmatched. Real performance data, real strategies, and real support. No fluff or empty promises - just solid trading education and community that actually cares about your success.</p>
                   </div>
@@ -1217,13 +1786,13 @@
  Program</h4>
 <p class="box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto md:text-left">Partner with Crypto Bureau and earn recurring commissions.</p>
 </div>
-<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border gap-x-4 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full border p-6 rounded-lg border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.15)]"><div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border gap-x-4 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full border p-6 rounded-lg border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.15)]"><div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="images/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
 <p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Attractive commission structures and proven high conversion rates.</p>
 </div>
-<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="images/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
 <p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Trusted, professionally backed offerings.</p>
 </div>
-<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><img src="images/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
 </div>
 <p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Extensive affiliate support, including tracking tools, promotional materials, branded assets, and exclusive incentives.</p>
 </div>
@@ -1273,7 +1842,7 @@
       <div class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
         <div class="items-center box-border gap-x-6 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-6">
           <a href="/" class="relative text-[oklch(0.922_0_0)] items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 z-20 hover-scale">
-            <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
+            <img alt="Crypto Bureau Logo" src="images/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
             <p class="text-xl font-semibold bg-clip-text bg-[linear-gradient(90.14deg,rgb(250,232,196)_-6.04%,rgb(255,171,8)_72.81%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)]">Crypto Bureau</p>
           </a>
         </div>
@@ -1281,26 +1850,26 @@
       </div>
       <div class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
         <p class="items-center box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-4">
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-42.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+          <img src="images/icon-42.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
           <span class="text-sm box-border block leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Company, 234 East, 19th Street, St. London 10001</span>
         </p>
         <div class="items-center box-border gap-x-8 block outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-4 md:flex">
           <p class="box-border gap-x-4 flex min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 md:min-h-[auto] md:min-w-[auto]">
-            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-43.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+            <img src="images/icon-43.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
             <span class="box-border block outline-[oklab(0.556_0_0_/_0.5)]">0000000000000</span>
           </p>
           <p class="box-border gap-x-4 flex min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 md:min-h-[auto] md:min-w-[auto]">
-            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-44.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+            <img src="images/icon-44.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
             <span class="box-border block outline-[oklab(0.556_0_0_/_0.5)]">(123) 456-7890</span>
           </p>
         </div>
         <p class="items-center box-border gap-x-8 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-12">
           <span class="text-[oklab(0.999994_0.0000455678_0.0000200868_/_0.75)] text-sm box-border block leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Social Media</span>
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-45.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-46.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-47.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-48.svg" alt="Icon" class="box-border h-[18px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
-          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-49.svg" alt="Icon" class="box-border h-[25px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
+          <img src="images/icon-45.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="images/icon-46.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="images/icon-47.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="images/icon-48.svg" alt="Icon" class="box-border h-[18px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
+          <img src="images/icon-49.svg" alt="Icon" class="box-border h-[25px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
         </p>
       </div>
     </div>
@@ -1446,24 +2015,6 @@ document.addEventListener('DOMContentLoaded', function() {
   progressBars.forEach(bar => {
     progressObserver.observe(bar);
   });
-
-  // Add typing effect to main heading
-  const mainHeading = document.querySelector('h1');
-  if (mainHeading) {
-    const text = mainHeading.textContent;
-    mainHeading.textContent = '';
-    let i = 0;
-    
-    function typeWriter() {
-      if (i < text.length) {
-        mainHeading.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      }
-    }
-    
-    setTimeout(typeWriter, 1000);
-  }
 
   // Add hover effects to cards
   document.querySelectorAll('.hover-scale').forEach(element => {
