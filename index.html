@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Bureau - Your Gateway to Mastering the Crypto Market</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {
+          fontFamily: {
+            dm_sans: ['DM Sans', 'DM Sans Fallback']
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'slide-in-left': 'slideInLeft 0.8s ease-out',
+            'slide-in-right': 'slideInRight 0.8s ease-out',
+            'bounce-in': 'bounceIn 1s ease-out',
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-30px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' }
+            },
+            slideInRight: {
+              '0%': { opacity: '0', transform: 'translateX(30px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' }
+            },
+            bounceIn: {
+              '0%': { opacity: '0', transform: 'scale(0.3)' },
+              '50%': { opacity: '1', transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 5px rgba(255, 171, 8, 0.5)' },
+              '50%': { boxShadow: '0 0 20px rgba(255, 171, 8, 0.8)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @font-face {
+      font-family: 'DM Sans';
+      src: url('https://crypto-bureau-tywy.vercel.app/_next/static/media/9c18eba18d4baf22-s.p.woff2') format("woff2");
+      font-weight: 100 1000;
+      font-style: normal;
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .animate-on-scroll.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    
+    .carousel-container {
+      overflow: hidden;
+    }
+    
+    .carousel-track {
+      transition: transform 0.5s ease;
+    }
+    
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-content.open {
+      max-height: 200px;
+    }
+    
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    
+    .hover-glow {
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .hover-glow:hover {
+      box-shadow: 0 0 20px rgba(255, 171, 8, 0.3);
+    }
+    
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90.14deg, rgb(250,232,196) -6.04%, rgb(255,171,8) 72.81%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .blur-bg {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body class="text-[oklch(0.985_0_0)] text-base not-italic normal-nums font-normal accent-auto bg-[oklch(0.1411_0.0018_17.37)] box-border block tracking-[normal] leading-6 list-outside list-disc outline-[oklab(0.556_0_0_/_0.5)] overflow-x-hidden overflow-y-auto text-start indent-[0px] normal-case visible border-separate font-dm_sans">
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full w-80 bg-gray-950 z-50 p-6">
+  <div class="flex justify-between items-center mb-8">
+    <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="w-12 h-auto" />
+    <button id="close-mobile-menu" class="text-white text-2xl">&times;</button>
+  </div>
+  <nav class="space-y-4">
+    <div class="dropdown">
+      <button class="w-full text-left py-2 px-4 text-white hover:bg-gray-800 rounded flex justify-between items-center">
+        Market Research & Analysis
+        <svg class="w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <div class="dropdown-menu pl-4 space-y-2">
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Daily Analysis</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Weekly Reports</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Market Trends</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="w-full text-left py-2 px-4 text-white hover:bg-gray-800 rounded flex justify-between items-center">
+        Crypto Bureau Academy
+        <svg class="w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <div class="dropdown-menu pl-4 space-y-2">
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Essential Education</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Trading Mastery</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">DeFi Masterclass</a>
+      </div>
+    </div>
+    <a href="#" class="block py-2 px-4 text-white hover:bg-gray-800 rounded">Xlab Results</a>
+    <a href="#" class="block py-2 px-4 text-white hover:bg-gray-800 rounded">Memberships</a>
+    <a href="#" class="block py-2 px-4 text-white hover:bg-gray-800 rounded">Testimonials</a>
+    <div class="dropdown">
+      <button class="w-full text-left py-2 px-4 text-white hover:bg-gray-800 rounded flex justify-between items-center">
+        About Us
+        <svg class="w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <div class="dropdown-menu pl-4 space-y-2">
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Our Team</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Our Mission</a>
+        <a href="#" class="block py-2 text-gray-300 hover:text-white">Contact</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="relative bg-gray-950 box-border outline-[oklab(0.556_0_0_/_0.5)] px-4 md:px-6 sticky top-0 z-30 blur-bg">
+  <div class="items-center box-border gap-x-4 flex h-[72px] justify-between max-w-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full mx-auto md:max-w-screen-xl">
+    <div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2">
+      <div class="items-center box-border gap-x-6 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-6">
+        <a href="/" class="relative text-[oklch(0.922_0_0)] box-border block outline-[oklab(0.556_0_0_/_0.5)] z-20 hover-scale">
+          <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
+        </a>
+      </div>
+    </div>
+    
+    <nav aria-label="Main" class="relative items-center box-border hidden basis-[0%] grow justify-center max-w-max min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:flex md:min-h-[auto] md:min-w-[auto]">
+      <div class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+        <ul class="items-center box-border gap-x-2 flex basis-[0%] grow justify-center list-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 pl-0">
+          <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
+              Market Research & Analysis
+              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+            </button>
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Daily Analysis</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800">Weekly Reports</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-b-lg">Market Trends</a>
+            </div>
+          </li>
+          <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
+              Crypto Bureau Academy
+              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+            </button>
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Essential Education</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800">Trading Mastery</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-b-lg">DeFi Masterclass</a>
+            </div>
+          </li>
+          <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <a href="/xlab-results" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:bg-gray-800 transition-colors">Xlab Results</a>
+          </li>
+          <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <a href="/memberships" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:bg-gray-800 transition-colors">Memberships</a>
+          </li>
+          <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <a href="/testimonials" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:bg-gray-800 transition-colors">Testimonials</a>
+          </li>
+          <li class="relative dropdown box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+            <button class="text-sm font-medium items-center bg-transparent inline-flex h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center w-max px-2 py-1.5 rounded-lg hover:bg-gray-800 transition-colors">
+              About Us
+              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-1.svg" alt="Icon" class="relative box-border h-3.5 outline-[oklab(0.556_0_0_/_0.5)] w-3.5 ml-1 -mr-0.5 top-px" />
+            </button>
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-t-lg">Our Team</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800">Our Mission</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-b-lg">Contact</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2">
+      <a href="#" class="text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] box-border gap-x-1.5 flex shrink-0 h-9 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1.5 text-nowrap px-3 rounded-lg hover-glow hover-scale">Join the Waitlist</a>
+      <button type="button" id="mobile-menu-btn" class="text-sm font-medium items-center bg-transparent gap-x-2 flex shrink-0 h-8 justify-center leading-5 min-h-[auto] min-w-[auto] outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-8 p-0 rounded-lg md:hidden md:min-h-0 md:min-w-0">
+        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-2.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
+  <!-- Hero Section -->
+  <section class="relative box-border min-h-[900px] outline-[oklab(0.556_0_0_/_0.5)] px-4 py-16 animate-on-scroll">
+    <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full z-20 mx-auto md:max-w-screen-xl">
+      <h1 class="text-2xl font-semibold box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] uppercase md:text-6xl md:leading-[75px] animate-slide-up">
+        Welcome to
+        <span class="text-2xl italic bg-clip-text bg-[linear-gradient(90.14deg,rgb(250,232,196)_-6.04%,rgb(255,171,8)_72.81%)] box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] md:text-6xl md:leading-[75px] animate-float">
+          Crypto <span class="text-2xl box-border inline-block leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] w-2 md:text-6xl md:hidden md:leading-[75px]"></span> Bureau,
+        </span>
+        Your Gateway to Mastering the Crypto Market
+      </h1>
+      <div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-4 md:grid-cols-[repeat(2,minmax(0px,1fr))]">
+        <div class="text-[oklab(0.985_0_0_/_0.8)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] md:text-base md:leading-[26px] animate-slide-in-left">
+          At Crypto Bureau, we're more than just a research lab—we're your strategic partner, dedicated to empowering your crypto journey through disciplined strategies, expert analyst insights, and the vibrant, exclusive Xlab Community.
+          <button class="text-emerald-400 text-sm font-medium bg-transparent leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] text-center underline p-0 md:text-base md:leading-[26px] hover:text-emerald-300 transition-colors">Learn More</button>
+        </div>
+        <div class="[align-items:normal] box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] pt-10 md:items-center md:pt-20 animate-slide-in-right">
+          <p class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-start md:text-center">
+            Unlock Expert Insights, Elevate Your Strategy, and Navigate<br class="box-border hidden outline-[oklab(0.556_0_0_/_0.5)] text-start md:block md:text-center" /> the Crypto Market with Confidence
+          </p>
+          <button class="text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-full mt-6 mx-0 px-3 py-2 rounded-lg md:w-80 md:mx-auto hover-glow hover-scale animate-pulse-glow">
+            Explore Membership 
+            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-3.svg" alt="Icon" class="box-border shrink-0 h-4 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[225px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-2/4 animate-float"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 -left-48 bottom-0 md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 -right-32 top-0 md:block"></div>
+    <div class="absolute bg-emerald-600/90 box-border hidden blur-[500px] h-[394.73px] left-[-253px] outline-[oklab(0.556_0_0_/_0.5)] top-[-79px] transform-none w-[409.84px] z-10 md:block md:rotate-[-37.3899784760389deg]"></div>
+  </section>
+
+  <section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] px-4 py-10 animate-on-scroll"><div class="box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><h2 class="text-2xl font-semibold box-border leading-[30px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize md:text-5xl md:leading-[60px]">The Adoption Race Has Started</h2>
+<div class="text-[oklab(0.985_0_0_/_0.8)] text-sm box-border leading-[22.75px] max-w-screen-lg outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize mt-3 mx-auto md:text-base md:leading-[26px]">The crypto adoption race in 2025 is accelerating rapidly as institutions, governments, and consumers embrace digital assets. Bitcoin has soared past $120K, driving interest from major asset managers and prompting a surge in corporate treasuries holding crypto.<button class="text-emerald-400 text-sm font-medium bg-transparent leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)] underline normal-case p-0 md:text-base md:leading-[26px]">Learn More</button>
+</div>
+<div class="box-border gap-x-8 grid grid-cols-none max-w-screen-lg outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-8 mx-auto md:grid-cols-[repeat(2,minmax(0px,1fr))]"><div class="bg-zinc-900 shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_4px_6px_-1px,rgba(0,0,0,0.1)_0px_2px_4px_-2px] box-border outline-[oklab(0.556_0_0_/_0.5)] p-6 rounded-[14px]"><h3 class="text-lg font-semibold box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-6">Average Return On Invest Since 2015</h3>
+<div class="box-border flex justify-between outline-[oklab(0.556_0_0_/_0.5)] mb-6"><div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><span class="bg-[oklch(0.596_0.145_163.225)] box-border block h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4 rounded-md"></span>
+<span class="text-[oklab(0.985_0_0_/_0.7)] text-xs box-border block leading-4 outline-[oklab(0.556_0_0_/_0.5)] uppercase">MSCI WORLD INDEX</span>
+</div>
+<div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><span class="bg-[oklch(0.795_0.184_86.047)] box-border block h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4 rounded-md"></span>
+<span class="text-[oklab(0.985_0_0_/_0.7)] text-xs box-border block leading-4 outline-[oklab(0.556_0_0_/_0.5)] uppercase">BITCOIN</span>
+</div>
+</div>
+<div class="items-center box-border flex justify-between outline-[oklab(0.556_0_0_/_0.5)] mb-6"><span class="text-2xl font-semibold box-border block leading-8 outline-[oklab(0.556_0_0_/_0.5)]">approx. 7.84%</span>
+<span class="text-2xl font-semibold box-border block leading-8 outline-[oklab(0.556_0_0_/_0.5)]">approx. 231.81%</span>
+</div>
+<img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/4.png" class="text-transparent aspect-[auto_563_/_121] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[563px]" />
+</div>
+<div class="bg-zinc-900 shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_4px_6px_-1px,rgba(0,0,0,0.1)_0px_2px_4px_-2px] box-border outline-[oklab(0.556_0_0_/_0.5)] p-6 rounded-[14px]"><h3 class="text-lg font-semibold box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-6">Number Of Crypto User Worldwide</h3>
+<div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-6"><div class="text-[oklab(0.985_0_0_/_0.7)] text-xs box-border leading-4 outline-[oklab(0.556_0_0_/_0.5)] mb-1">2020</div>
+<div class="text-sm font-medium box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mb-2">Approx. 50 Million Users</div>
+<div class="bg-[oklch(0.269_0_0)] box-border h-3 outline-[oklab(0.556_0_0_/_0.5)] w-full overflow-hidden rounded-[3.35544e+07px]"><div class="bg-[oklch(0.681_0.162_75.834)] box-border h-3 outline-[oklab(0.556_0_0_/_0.5)] w-1/5 rounded-[3.35544e+07px]"></div>
+</div>
+</div>
+<div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="text-[oklab(0.985_0_0_/_0.7)] text-xs box-border leading-4 outline-[oklab(0.556_0_0_/_0.5)] mb-1">End of 2023</div>
+<div class="text-sm font-medium box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mb-2">Approx. 575 Million Users</div>
+<div class="bg-[oklch(0.269_0_0)] box-border h-3 outline-[oklab(0.556_0_0_/_0.5)] w-full overflow-hidden rounded-[3.35544e+07px]"><div class="bg-[oklch(0.681_0.162_75.834)] box-border h-3 outline-[oklab(0.556_0_0_/_0.5)] w-[90%] rounded-[3.35544e+07px]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+  <!-- Problems Section -->
+  <section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-x-hidden overflow-y-auto py-28 animate-on-scroll">
+    <div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.6)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 top-2/4 md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-40 top-1/4"></div>
+    <div class="relative box-border max-w-screen-xl outline-[oklab(0.556_0_0_/_0.5)] text-center w-full mx-auto px-4">
+      <h2 class="text-3xl font-medium box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] capitalize mb-12 md:text-5xl md:leading-[48px]">You may feel lost in the crypto landscape with plenty of misleading information and too much noise?</h2>
+      <div class="box-border gap-x-6 flex flex-wrap justify-center max-w-6xl outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 mt-12 mx-auto">
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-4.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Where Do I Even Start?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Overwhelmed by too much information and no clear entry point</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-5.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Which Coin Should I Invest In?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Fear of choosing the wrong one or missing out on a better opportunity</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-6.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[59px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">How Do I Keep My Crypto Secure?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Confused about wallets, private keys, and avoiding scams</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-7.svg" alt="Icon" class="box-border h-[73px] outline-[oklab(0.556_0_0_/_0.5)] w-[45px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">How Much Money Should I Put Into Crypto?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Uncertainty about how to balance risk vs reward</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-8.svg" alt="Icon" class="box-border h-[83px] outline-[oklab(0.556_0_0_/_0.5)] w-[65px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">When Should I Buy Or Sell?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Anxiety about timing the market right or avoiding losses</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-9.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Should I Long-Term Or Trade?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Unsure whether to be holder or an active trader</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border shrink-0 outline-[oklab(0.556_0_0_/_0.5)] w-auto border px-6 py-8 rounded-2xl border-solid border-[oklab(0.649374_0.0349512_0.12956_/_0.2)] md:w-[260px] hover-scale hover-glow">
+          <div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)]">
+            <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3">
+              <span class="box-border inline-block outline-[oklab(0.556_0_0_/_0.5)] animate-bounce-in">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-10.svg" alt="Icon" class="box-border h-[79px] outline-[oklab(0.556_0_0_/_0.5)] w-[77px]" />
+              </span>
+            </div>
+            <div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]">
+              <h3 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Who Do I Trust For Advice Or News?</h3>
+              <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-2">Uncertainty due to conflicting info from influencers and platforms</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.2)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-0"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-medium box-border leading-9 max-w-screen-lg outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize mx-auto md:text-5xl md:leading-[48px]">You are not alone. Most our members felt all this doubts, therefore it&#39;s time to take it seriously and get support from experts mentors on the field</h4>
+</div>
+<div class="relative box-border gap-x-8 grid grid-cols-none max-w-screen-lg outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-16 mx-auto md:grid-cols-[1fr_auto_1fr]"><div class="relative box-border gap-x-8 flex flex-col justify-center outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:gap-x-32 md:gap-y-32"><div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-yellow-900 box-border hidden h-px outline-[oklab(0.556_0_0_/_0.5)] w-10 -right-10 top-2/4 md:block"><div class="absolute border-l-yellow-900 box-border h-0 outline-[oklab(0.556_0_0_/_0.5)] w-0 border-l-4 border-r-[oklch(1_0_0_/_0.1)] border-y-transparent border-y-4 border-solid left-0 top-2/4"></div>
+</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.04)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_10px_15px_-3px,rgba(0,0,0,0.1)_0px_4px_6px_-4px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklab(0.844582_0.0215877_0.149271_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-6"><p class="text-white text-xl box-border leading-[32.5px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize">Success in the crypto industry doesn&#39;t come down to luck – it comes to access to right information, the right mentors and the ability to act with precision.</p>
+</div>
+</div>
+</div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-yellow-900 box-border hidden h-px outline-[oklab(0.556_0_0_/_0.5)] w-10 -right-10 top-2/4 md:block"><div class="absolute border-l-yellow-900 box-border h-0 outline-[oklab(0.556_0_0_/_0.5)] w-0 border-l-4 border-r-[oklch(1_0_0_/_0.1)] border-y-transparent border-y-4 border-solid left-0 top-2/4"></div>
+</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.04)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_10px_15px_-3px,rgba(0,0,0,0.1)_0px_4px_6px_-4px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklab(0.844582_0.0215877_0.149271_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-6"><p class="text-white text-xl box-border leading-[32.5px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize">That&#39;s the foundation of<span class="font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Crypto Bureau</span>
+ – a space where sharp execution meets disciplined strategy with 7 years of experience.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative items-center box-border hidden flex-col min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:flex md:min-h-[auto] md:min-w-[auto]"><div class="absolute bg-[oklab(0.649374_0.0349512_0.12956_/_0.5)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-px inset-y-0"></div>
+<div class="relative bg-yellow-900 box-border h-4 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-4 z-10 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]"></div>
+<div class="box-border basis-[0%] grow min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]"></div>
+<div class="relative bg-yellow-900 box-border h-4 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-4 z-10 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]"></div>
+</div>
+<div class="relative box-border gap-x-8 flex flex-col justify-center outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-0 md:gap-x-32 md:gap-y-32 md:mt-20"><div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-yellow-900 box-border h-px outline-[oklab(0.556_0_0_/_0.5)] w-10 -left-10 top-2/4"><div class="absolute border-r-yellow-900 box-border h-0 outline-[oklab(0.556_0_0_/_0.5)] w-0 border-l-[oklch(1_0_0_/_0.1)] border-r-4 border-y-transparent border-y-4 border-solid right-0 top-2/4"></div>
+</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.04)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_10px_15px_-3px,rgba(0,0,0,0.1)_0px_4px_6px_-4px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklab(0.844582_0.0215877_0.149271_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-6"><p class="text-white text-xl box-border leading-[32.5px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize">The ones occasionally winning in the space aren&#39;t replying on YouTube tutorials or chasing trends on social media. They&#39;re plugged into serious investors, analysts and experts who move strategically – well before the masses catch up.</p>
+</div>
+</div>
+</div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-yellow-900 box-border h-px outline-[oklab(0.556_0_0_/_0.5)] w-10 -left-10 top-2/4"><div class="absolute border-r-yellow-900 box-border h-0 outline-[oklab(0.556_0_0_/_0.5)] w-0 border-l-[oklch(1_0_0_/_0.1)] border-r-4 border-y-transparent border-y-4 border-solid right-0 top-2/4"></div>
+</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.04)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_10px_15px_-3px,rgba(0,0,0,0.1)_0px_4px_6px_-4px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklab(0.844582_0.0215877_0.149271_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-6"><p class="text-white text-xl box-border leading-[32.5px] outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize">It&#39;s built for serious investors seeking real-time market intelligence, expert support and high-level skills that move with conviction.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-center mt-8 mx-4">This is not for everyone but if you are committed to staying ahead of the curve, we invite to join Us.</p>
+</section>
+
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.2)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-40 top-1/4 md:block"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-medium box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center capitalize md:text-5xl md:leading-[48px]">What is the concept behind crypto Bureau</h4>
+</div>
+<div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-16 px-4 md:grid-cols-[repeat(3,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-11.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Clear and User-Friendly Pathway</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Navigating the vast crypto world can be challenging, particularly for newcomers. At Crypto Bureau, we distill complex market insights into clear, concise, and accessible content. Our beginner-friendly materials swiftly equip you to apply essential crypto market strategies confidently.</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-12.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Building Discipline and Mastery</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Real crypto success is rooted in disciplined strategies. Our experienced analysts help you establish robust risk management, trading psychology, and disciplined investment habits essential for sustained growth and profitability.</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-13.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[101px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Expert Market Analysis and Actionable Insights</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Gain access to meticulously researched trade ideas, daily market updates, and comprehensive analysis. Each recommendation undergoes thorough vetting to ensure transparency, accuracy, and actionable insights without hype or unrealistic promises.</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border col-end-auto col-start-auto max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full border mx-0 px-6 py-8 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)] md:col-end-[span_3] md:col-start-[span_3] md:max-w-[415px] md:mx-auto"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-14.svg" alt="Icon" class="box-border h-[101px] outline-[oklab(0.556_0_0_/_0.5)] w-[100px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">One Community</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">We are building a thriving community that is built for passionate traders and investors to connect, collaborate, and grow. Engage in meaningful discussions, exchange insights, share experiences, and stay motivated alongside like-minded peers committed to mutual growth and success.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-10 md:py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.9)] box-border hidden blur-[450px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4 md:block"></div>
+<div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.9)] box-border hidden blur-[450px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 top-2/4 md:block"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center mb-14 md:text-4xl md:leading-10">Is Crypto Bureau Right For You?</h4>
+<div class="backdrop-blur-[11.5px] bg-[linear-gradient(90deg,rgba(237,160,11,0.11)_0%,rgba(4,163,110,0.094)_100%)] box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] border overflow-hidden rounded-[10px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.1)] md:flex-row"><div class="box-border basis-[0%] grow outline-[oklab(0.556_0_0_/_0.5)] p-8"><h5 class="text-white text-lg font-semibold box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-6 md:text-xl">Crypto Bureau Is Perfect If You:</h5>
+<ul class="text-[oklab(0.999994_0.0000455678_0.0000200868_/_0.9)] box-border outline-[oklab(0.556_0_0_/_0.5)] pl-5"><li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Feel Overwhelmed By The Complexity Of The Crypto Market</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Desire Consistent, Sustainable Profits Over Volatile, Risky Ventures.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Lack The Time Or Resources For Extensive Market Research.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Seek Structured Guidance From Entry–Level To Advanced Trading.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Struggle With Conflicting Expert Advice And Fear Of Missing Out (FOMO).</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left">Are Eager To Adopt Disciplined And Informed Trading Habits.</li>
+</ul>
+</div>
+<div class="bg-[oklab(0.63716_0.0295808_0.126768_/_0.5)] box-border hidden min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-px my-8 md:block md:min-h-[auto] md:min-w-[auto]"></div>
+<div class="box-border basis-[0%] grow outline-[oklab(0.556_0_0_/_0.5)] p-8"><h5 class="text-white text-lg font-semibold box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-6 md:text-xl">Crypto Bureau Is NOT For You If You:</h5>
+<ul class="text-[oklab(0.999994_0.0000455678_0.0000200868_/_0.9)] box-border outline-[oklab(0.556_0_0_/_0.5)] pl-5"><li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Expect Quick, Effortless Wealth Without Consistent Effort.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Refuse To Follow Structured Risk Management Guidelines.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Risk Funds You Cannot Afford To Lose.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left mb-4">Resist Abandoning Destructive Trading Habits.</li>
+<li class="box-border outline-[oklab(0.556_0_0_/_0.5)] text-left">Prefer Unstructured, High–Risk Gambling–Style Trades.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-4 md:text-5xl md:leading-[62.4px]">Introducing Crypto Bureau Membership</h4>
+<p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] mt-4 mb-8">Unlock exclusive insights and actionable strategies crafted by our seasoned crypto analysts. Crypto Bureau Membership is your gateway to comprehensive market intelligence, designed to elevate your investment decisions and amplify your crypto portfolio&#39;s potential.</p>
+<h5 class="text-3xl font-medium box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-6 md:text-4xl md:leading-[46.8px]">Feature List</h5>
+<div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row"><div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full"><div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full"><div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20"><button class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+</button>
+<button class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+</button>
+</div>
+<div class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] translate-x-[-1404px] -ml-2 md:translate-x-[-632px] md:-ml-4"><div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-17.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[54px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Research &amp; Analysis</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Expertly curated insights, deep-dive analyses, and comprehensive reports to keep you ahead of market trends.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-18.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Market Direction</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Clear, actionable guidance to navigate market fluctuations confidently, maximizing your investment opportunities.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-19.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Real-Time Market Updates</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Stay informed with timely, relevant market movements delivered directly by our expert analysts, ensuring you&#39;re always a step ahead.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-20.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[39px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Exclusive Airdrop Reports</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Gain early access to vetted, high-value airdrops, handpicked by our analysts for maximum potential rewards.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-21.svg" alt="Icon" class="box-border h-11 outline-[oklab(0.556_0_0_/_0.5)] w-[49px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Altcoin Deep Dives</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Receive detailed analysis and expert perspectives on promising altcoins, helping you spot hidden opportunities before the market does.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-22.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[55px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Potential Projects</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Discover emerging crypto projects carefully vetted for long-term growth potential, enabling strategic early investments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-23.svg" alt="Icon" class="box-border h-[54px] outline-[oklab(0.556_0_0_/_0.5)] w-[43px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Top Picks from Analysts</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Get direct access to our analysts&#39; top investment picks, showcasing assets with strong fundamentals and significant upside potential.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] py-10 md:py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-4 md:text-5xl md:leading-[62.4px]">Introducing Crypto Bureau xLAB Membership</h4>
+<h6 class="text-xl font-medium box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)]">-Your Comprehensive Crypto Community For Both Traders and investors</h6>
+<p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] mt-4 mb-8">Unlock exclusive insights and actionable strategies crafted by our seasoned crypto analysts. Crypto Bureau Membership is your gateway to comprehensive market intelligence, designed to elevate your investment decisions and amplify your crypto portfolio&#39;s potential.</p>
+<h5 class="text-3xl font-medium box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase mb-6 md:text-4xl md:leading-[46.8px]">Feature List</h5>
+<div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row"><div class="relative box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full"><div role="region" class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] w-full"><div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-16 md:-top-20"><button class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-20 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+</button>
+<button class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+</button>
+</div>
+<div class="box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden"><div class="items-stretch box-border flex h-full outline-[oklab(0.556_0_0_/_0.5)] translate-x-[-1755px] -ml-2 md:translate-x-[-632px] md:-ml-4"><div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-24.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Real-Time Expert Trading Ideas</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Detailed entries, the way we execute take profit, risk management guidelines, and recommended leverage.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-25.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Swing Trading Setups</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Short-term and medium-term trading strategies tailored for different trading styles.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-26.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Building Discipline and Mastery</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Real crypto success is rooted in disciplined strategies. Our experienced analysts help you establish robust risk management, trading psychology, and disciplined investment habits essential for sustained growth and profitability.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-27.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Weekly In-Depth Market Analysis</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Detailed technical breakdowns and strategic market insights.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-28.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">On-Chain Analysis</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Insightful blockchain activity analyses providing strategic market advantages.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-29.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Proven Risk Management Frameworks</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Structured methods ensuring disciplined and emotion-free trading.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-30.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Interactive Community Engagement</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Collaborative discussions, monthly giveaways, and exclusive deals.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" class="box-border flex basis-full shrink-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-3/12 md:pl-4"><div class="relative text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border p-6 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2"><div class="items-center box-border flex basis-[0%] flex-col grow outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-31.svg" alt="Icon" class="box-border h-12 outline-[oklab(0.556_0_0_/_0.5)] w-12" />
+</span>
+</div>
+<div class="box-border basis-[0%] grow max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Live Alerts &amp; Notifications</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Real-time updates on critical market movements, crypto news, and trade developments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="relative bg-[oklch(0.1411_0.0018_17.37)] box-border outline-[oklab(0.556_0_0_/_0.5)] -z-10 pt-10 pb-20 px-4 md:pt-20 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] mx-auto"><h2 class="text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center mb-10">Long Term Investment Picks Results</h2>
+<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-10"><img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/5.png" class="text-transparent aspect-[auto_1440_/_409] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-full" />
+</div>
+</div>
+</section>
+
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-28"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.2)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">Monthly Xlab Performance Reports</h4>
+<p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Explore our detailed monthly reports showcasing performance reviews, results from trade ideas, and in-depth analyses from our expert analyst team. Easily navigate from month to month, allowing transparent insights into our consistent results and successful strategies.</p>
+</div>
+<div class="items-center box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mt-16"><img alt="" src="https://c.animaapp.com/me8avijrFdPAfI/assets/6.png" class="text-transparent aspect-[auto_1320_/_748] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[1320px]" />
+</div>
+</div>
+</section>
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-10 md:py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.2)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-40 top-1/4 md:block"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">The Crypto Bureau Difference</h4>
+<p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Discover what sets us apart—practical education, sharp market insights, a thriving community, and a commitment to long-term crypto success.</p>
+</div>
+<div class="box-border gap-x-6 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 mt-16 md:grid-cols-[repeat(4,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-32.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Concise Market Insights</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">High-quality market analysis</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-33.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Focused Educational Resources</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Comprehensive learning materials</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-34.svg" alt="Icon" class="box-border h-20 outline-[oklab(0.556_0_0_/_0.5)] w-[81px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Community-Driven Growth</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Collaborative learning environment</p>
+</div>
+</div>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-12 rounded-2xl border-solid border-[oklch(1_0_0_/_0.1)]"><div class="items-center box-border flex flex-col outline-[oklab(0.556_0_0_/_0.5)] text-center"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mb-4 p-3"><span class="text-white box-border inline-block outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-35.svg" alt="Icon" class="box-border h-[70px] outline-[oklab(0.556_0_0_/_0.5)] w-[73px]" />
+</span>
+</div>
+<div class="box-border max-w-72 outline-[oklab(0.556_0_0_/_0.5)]"><h5 class="text-transparent text-xl font-semibold bg-clip-text bg-[linear-gradient(to_right_in_oklab,rgb(255,255,255)_0px,rgb(255,255,255)_100%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)] md:text-2xl md:leading-8">Commitment to Long-Term Success</h5>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 min-h-6 opacity-100 outline-[oklab(0.556_0_0_/_0.5)] mt-2 md:opacity-0">Sustainable growth strategies</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-10 animate-on-scroll"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-40 top-1/4 md:block"></div>
+<div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+<div class="relative items-center box-border grid grid-cols-none max-w-screen-xl outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 rounded-lg md:grid-cols-[repeat(2,minmax(0px,1fr))]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] uppercase md:text-5xl md:leading-[62.4px]">Crypto Bureau <br class="text-3xl box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] md:text-5xl md:leading-[62.4px]" />
+ Academy</h4>
+<p class="box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] mt-4 mx-auto">Partner with Crypto Bureau and earn recurring commissions.</p>
+</div>
+<div class="box-border gap-x-2 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 w-full px-0 py-6 rounded-lg md:px-6"><div class="shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 rounded-[14px]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-2"><div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><div class="text-[oklab(0.63716_0.0295808_0.126768_/_0.3)] text-8xl font-bold box-border leading-[96px] opacity-90 outline-[oklab(0.556_0_0_/_0.5)]">1</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border p-2 rounded-[10px] border-solid border-[oklch(1_0_0_/_0.1)] md:w-96"><h3 class="text-white text-lg font-semibold box-border tracking-[0.45px] leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-1">ESSENTIAL EDUCATION</h3>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Fundamental concepts for beginners</p>
+</div>
+</div>
+</div>
+</div>
+<div class="shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 ml-0 rounded-[14px] md:ml-12"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-2"><div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><div class="text-[oklab(0.63716_0.0295808_0.126768_/_0.3)] text-8xl font-bold box-border leading-[96px] opacity-90 outline-[oklab(0.556_0_0_/_0.5)]">2</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border p-2 rounded-[10px] border-solid border-[oklch(1_0_0_/_0.1)] md:w-96"><h3 class="text-white text-lg font-semibold box-border tracking-[0.45px] leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-1">TRADING MASTERY COURSE</h3>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Advanced strategies and techniques</p>
+</div>
+</div>
+</div>
+</div>
+<div class="shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 rounded-[14px]"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-2"><div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><div class="text-[oklab(0.63716_0.0295808_0.126768_/_0.3)] text-8xl font-bold box-border leading-[96px] opacity-90 outline-[oklab(0.556_0_0_/_0.5)]">3</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border p-2 rounded-[10px] border-solid border-[oklch(1_0_0_/_0.1)] md:w-96"><h3 class="text-white text-lg font-semibold box-border tracking-[0.45px] leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-1">DEFI MASTERCLASS</h3>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Navigate decentralized finance confidently</p>
+</div>
+</div>
+</div>
+</div>
+<div class="shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 ml-0 rounded-[14px] md:ml-12"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)] p-2"><div class="items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2"><div class="text-[oklab(0.63716_0.0295808_0.126768_/_0.3)] text-8xl font-bold box-border leading-[96px] opacity-90 outline-[oklab(0.556_0_0_/_0.5)]">4</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border p-2 rounded-[10px] border-solid border-[oklch(1_0_0_/_0.1)] md:w-96"><h3 class="text-white text-lg font-semibold box-border tracking-[0.45px] leading-7 outline-[oklab(0.556_0_0_/_0.5)] mb-1">INVESTMENT FUNDAMENTALS COURSE</h3>
+<p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Long-term crypto investing strategies</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll"><div class="absolute bg-[oklab(0.792_-0.184039_0.0990491_/_0.2)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+<div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-white text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">The Crypto Bureau Difference</h4>
+</div>
+<div class="box-border outline-[oklab(0.556_0_0_/_0.5)] mt-16"><div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)]"><div class="absolute bg-[oklab(0.63716_0.0295808_0.126768_/_0.3)] box-border hidden h-[600px] outline-[oklab(0.556_0_0_/_0.5)] w-px z-30 left-2/4 top-[108px] md:block"></div>
+<div class="absolute box-border hidden h-24 outline-[oklab(0.556_0_0_/_0.5)] w-[69%] pt-0.5 px-0.5 rounded-t-[50px] border-l border-r border-t border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.3)] left-2/4 top-16 md:block"><div class="box-border h-full outline-[oklab(0.556_0_0_/_0.5)] w-full rounded-t-3xl"></div>
+</div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] z-20 mt-10"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] border-[oklab(0.76655_-0.125209_0.0272859_/_0.2)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid"><div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mx-auto p-1 rounded-[3.35544e+07px] border-2 border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]"><div class="items-center bg-[linear-gradient(in_oklab,rgb(0,0,0)_0px,rgb(1,44,30)_50%,rgb(1,82,55)_100%)] box-border flex h-[88px] justify-center outline-[oklab(0.556_0_0_/_0.5)] w-[88px] mx-auto p-2.5 rounded-[3.35544e+07px]"><img alt="Crypto Bureau logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-[76px]" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="box-border gap-x-8 grid grid-cols-[repeat(1,minmax(0px,1fr))] outline-[oklab(0.556_0_0_/_0.5)] gap-y-10 mt-10 md:grid-cols-[repeat(3,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border pb-8 px-8 rounded-[14px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)]"><div class="items-center bg-[linear-gradient(rgb(0,0,0),rgb(1,82,55))] box-border flex h-14 justify-center outline-[oklab(0.556_0_0_/_0.5)] w-14 border border-amber-300/20 -mt-7 mx-auto rounded-[3.35544e+07px] border-solid">1</div>
+<h3 class="text-2xl font-semibold box-border leading-8 outline-[oklab(0.556_0_0_/_0.5)] text-center mt-6 mb-4">Concise Market <br class="box-border outline-[oklab(0.556_0_0_/_0.5)]" />
+ Insights</h3>
+<p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center">High-quality market analysis..</p>
+</div>
+<div class="box-border hidden min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:block md:min-h-[auto] md:min-w-[auto]"></div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border pb-8 px-8 rounded-[14px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)]"><div class="items-center bg-[linear-gradient(rgb(0,0,0),rgb(1,82,55))] box-border flex h-14 justify-center outline-[oklab(0.556_0_0_/_0.5)] w-14 border border-amber-300/20 -mt-7 mx-auto rounded-[3.35544e+07px] border-solid">2</div>
+<h3 class="text-2xl font-semibold box-border leading-8 outline-[oklab(0.556_0_0_/_0.5)] text-center mt-6 mb-4">Focused Educational <br class="box-border outline-[oklab(0.556_0_0_/_0.5)]" />
+ Resources</h3>
+<p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center">Practical, no-fluff learning materials.</p>
+</div>
+</div>
+</div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] pt-6 md:pt-20"><div class="absolute box-border hidden h-24 max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] w-auto pt-0.5 px-0.5 rounded-t-[64px] border-l border-r border-t border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.3)] left-2/4 top-4 md:block md:w-2/5"><div class="box-border h-full outline-[oklab(0.556_0_0_/_0.5)] w-full rounded-t-3xl"></div>
+</div>
+<div class="box-border gap-x-32 grid grid-cols-[repeat(1,minmax(0px,1fr))] max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] gap-y-10 mt-4 mx-auto md:grid-cols-[repeat(2,minmax(0px,1fr))]"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border pb-16 px-8 rounded-[14px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)]"><div class="items-center bg-[linear-gradient(rgb(0,0,0),rgb(1,82,55))] box-border flex h-14 justify-center outline-[oklab(0.556_0_0_/_0.5)] w-14 border border-amber-300/20 -mt-7 mx-auto rounded-[3.35544e+07px] border-solid">3</div>
+<h3 class="text-2xl font-semibold box-border leading-8 outline-[oklab(0.556_0_0_/_0.5)] text-center mt-6 mb-4">Community-Driven <br class="box-border outline-[oklab(0.556_0_0_/_0.5)]" />
+ Growth</h3>
+<p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center">Practical, no-fluff learning materials.</p>
+</div>
+<div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border pb-16 px-8 rounded-[14px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)]"><div class="items-center bg-[linear-gradient(rgb(0,0,0),rgb(1,82,55))] box-border flex h-14 justify-center outline-[oklab(0.556_0_0_/_0.5)] w-14 border border-amber-300/20 -mt-7 mx-auto rounded-[3.35544e+07px] border-solid">4</div>
+<h3 class="text-2xl font-semibold box-border leading-8 outline-[oklab(0.556_0_0_/_0.5)] text-center mt-6 mb-4">Only Required Info <br class="box-border outline-[oklab(0.556_0_0_/_0.5)]" />
+ provided</h3>
+<p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center">We cut though noise and we deliver only what need to br deliver</p>
+</div>
+</div>
+</div>
+<div class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] pt-6 md:pt-12"><div class="box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] mt-4 mx-auto md:max-w-sm"><div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] w-full border pb-16 px-8 rounded-[14px] border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)]"><div class="items-center bg-[linear-gradient(rgb(0,0,0),rgb(1,82,55))] box-border flex h-14 justify-center outline-[oklab(0.556_0_0_/_0.5)] w-14 border border-amber-300/20 -mt-7 mx-auto rounded-[3.35544e+07px] border-solid">5</div>
+<h3 class="text-2xl font-semibold box-border leading-8 outline-[oklab(0.556_0_0_/_0.5)] text-center mt-6 mb-4">Commitment to <br class="box-border outline-[oklab(0.556_0_0_/_0.5)]" />
+ Long-Term Success</h3>
+<p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] text-center">Encouraging sustainable strategies and resilient habits.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+  <!-- Testimonials Carousel Section -->
+  <section class="relative text-white box-border outline-[oklab(0.556_0_0_/_0.5)] z-20 py-28 animate-on-scroll">
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+    <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl">
+      <h4 class="text-3xl font-semibold box-border leading-[39px] max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase mb-4 md:text-5xl md:leading-[62.4px] md:text-left">Testimonials from Our Xlab Community</h4>
+      <p class="text-[oklch(0.872_0.01_258.338)] box-border max-w-4xl outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mb-12 md:text-left">Hear directly from Crypto Bureau members who've significantly improved their trading through structured, disciplined methods. Transparent monthly performance reports demonstrate our proven results and commitment to honesty.</p>
+      
+      <div class="items-start box-border gap-x-8 flex flex-col outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 md:flex-row">
+        <div class="box-border basis-auto outline-[oklab(0.556_0_0_/_0.5)] mx-auto pl-2 md:basis-[30%] md:pl-4">
+          <div class="text-[oklch(0.985_0_0)] bg-[linear-gradient(to_right_bottom,oklab(0.681_0.0396466_0.157074_/_0.2)_0px,oklab(0.476_0.0536831_0.100569_/_0.2)_100%)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full min-w-[280px] outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 text-center border p-8 rounded-[14px] border-solid border-[oklab(0.681_0.0396466_0.157074_/_0.3)] hover-scale hover-glow">
+            <div class="items-center box-border flex flex-col h-full justify-center outline-[oklab(0.556_0_0_/_0.5)]">
+              <div class="text-white text-6xl font-bold box-border leading-[60px] outline-[oklab(0.556_0_0_/_0.5)] mb-2 gradient-text">4.98</div>
+              <div class="box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-36.svg" alt="Icon" class="text-white box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+              </div>
+              <div class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">156 VERIFIED REVIEWS</div>
+              <button class="text-white font-semibold items-center bg-transparent bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] flex outline-[oklab(0.556_0_0_/_0.5)] mt-6 px-6 py-2 rounded-[10px] hover-scale hover-glow">
+                View More 
+                <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-37.svg" alt="Icon" class="box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+        
+
+        
+        <!-- Testimonials Carousel -->
+        <div class="relative box-border hidden min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-full md:block md:min-h-[auto] md:min-w-[auto]">
+          <div class="absolute box-border flex justify-center outline-[oklab(0.556_0_0_/_0.5)] right-20 -top-20">
+            <button id="testimonials-prev" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border -mr-14 p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -left-12 top-2/4 md:min-h-[auto] md:min-w-[auto] hover-scale">
+              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-15.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+            </button>
+            <button id="testimonials-next" class="relative text-sm font-medium items-center bg-[oklab(1_0_0_/_0.045)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-12 justify-center leading-5 min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-12 border p-0 rounded-[3.35544e+07px] border-solid border-[oklch(1_0_0_/_0.15)] -right-12 top-2/4 md:min-h-[auto] md:min-w-[auto] hover-scale">
+              <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-16.svg" alt="Icon" class="box-border shrink-0 h-5 outline-[oklab(0.556_0_0_/_0.5)] text-nowrap w-5" />
+            </button>
+          </div>
+          <div class="carousel-container box-border outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+            <div id="testimonials-track" class="carousel-track box-border flex outline-[oklab(0.556_0_0_/_0.5)] transform-none -ml-2 md:-ml-4">
+              <!-- Testimonial Cards -->
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] transform-none pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Zabran</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 18, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The team behind this platform is incredibly active and engaged with the community. They don't just provide insights - they genuinely support and guide members, making sure everyone benefits. You can tell they put in real effort!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Irata</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 18, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">It's rare to find a platform where the team is as involved as they are here. They interact with members daily, answer questions, and make sure no one feels left behind. You can tell they're passionate about what they do!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Tosmit</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 19, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">Unlike many platforms that feel distant, this one stands out with its transparency. The leadership is upfront about everything, always communicating and ensuring members feel valued and informed. A refreshing experience!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Marcus</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 20, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The structured approach to trading here is game-changing. Monthly performance reports keep everything transparent, and the disciplined methods have significantly improved my trading results. Highly recommend!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Sarah</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 22, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">What sets this community apart is the genuine commitment to member success. The insights are actionable, the support is constant, and the results speak for themselves. Best investment I've made in my trading journey.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-border basis-full shrink-0 min-h-0 outline-[oklab(0.556_0_0_/_0.5)] pl-2 md:basis-[30%] md:min-h-[auto] md:pl-4">
+                <div class="testimonial-card text-[oklch(0.985_0_0)] bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.1)_0px_1px_2px_-1px] box-border gap-x-6 flex flex-col h-full outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 border py-6 rounded-[14px] border-solid border-[oklch(1_0_0_/_0.1)]">
+                  <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] px-6 py-2 md:min-h-[auto] md:min-w-[auto]">
+                    <div class="items-center box-border flex outline-[oklab(0.556_0_0_/_0.5)] mb-4">
+                      <div class="items-center bg-[oklch(0.446_0.03_256.802)] box-border flex h-10 justify-center min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] w-10 mr-3 rounded-[3.35544e+07px] md:min-h-[auto] md:min-w-[auto]">
+                        <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-38.svg" alt="Icon" class="text-[oklch(0.872_0.01_258.338)] box-border h-5 outline-[oklab(0.556_0_0_/_0.5)] w-5" />
+                      </div>
+                      <div class="box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+                        <h5 class="text-white font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)]">Alex</h5>
+                        <p class="text-[oklch(0.707_0.022_261.325)] text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Joined June 25, 2024</p>
+                      </div>
+                    </div>
+                    <div class="box-border flex outline-[oklab(0.556_0_0_/_0.5)] mt-20 mb-4">
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                      <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-39.svg" alt="Icon" class="text-[oklch(0.792_0.209_151.711)] box-border h-4 outline-[oklab(0.556_0_0_/_0.5)] w-4" />
+                    </div>
+                    <p class="text-[oklch(0.872_0.01_258.338)] text-sm box-border leading-[22.75px] outline-[oklab(0.556_0_0_/_0.5)]">The transparency and honesty here is unmatched. Real performance data, real strategies, and real support. No fluff or empty promises - just solid trading education and community that actually cares about your success.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="relative bg-[oklch(0.1411_0.0018_17.37)] box-border outline-[oklab(0.556_0_0_/_0.5)] px-4 py-20 animate-on-scroll">
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] top-[-33.3333%] w-96 left-40 md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-[33.3333%] md:block"></div>
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border hidden blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 right-0 bottom-0 md:block"></div>
+    <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full z-30 mx-auto md:max-w-screen-xl">
+      <h2 class="text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center mb-10">Frequently Asked Questions</h2>
+      <div class="relative box-border gap-x-6 grid grid-cols-[repeat(1,minmax(0px,1fr))] outline-[oklab(0.556_0_0_/_0.5)] gap-y-6 z-50 md:grid-cols-[repeat(2,minmax(0px,1fr))]">
+        
+        <!-- FAQ Item 1 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                What is Crypto Bureau Membership?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">Crypto Bureau Membership provides exclusive access to expert market analysis, trading insights, and educational resources designed to help you navigate the crypto market with confidence and discipline.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                What is Crypto Bureau Xlab Membership?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">Xlab Membership is our premium tier offering real-time trading ideas, advanced risk management frameworks, and access to our exclusive community of serious traders and investors.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                What's the main difference between the memberships?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">The basic membership focuses on market research and analysis, while Xlab membership includes active trading signals, real-time alerts, and advanced community features for serious traders.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                Do I need previous trading experience to join?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">No prior experience is required. We provide educational resources for beginners while also offering advanced strategies for experienced traders. Our Academy section covers everything from basics to advanced concepts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                How quickly can I expect results?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">Results vary based on your commitment and market conditions. We focus on long-term sustainable growth rather than quick gains. Most members see improvement in their trading discipline within the first month.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] w-full">
+          <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border outline-[oklab(0.556_0_0_/_0.5)] border px-6 py-3 rounded-lg border-solid border-[oklch(1_0_0_/_0.1)] hover-glow">
+            <h3 class="box-border flex outline-[oklab(0.556_0_0_/_0.5)]">
+              <button type="button" class="faq-toggle text-lg font-medium items-start bg-transparent gap-x-4 flex basis-[0%] grow justify-between outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 text-left px-0 py-2 rounded-lg">
+                What payment methods are accepted?
+                <svg class="faq-icon w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </h3>
+            <div class="faq-content text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] overflow-hidden">
+              <p class="py-4 text-gray-300">We accept major credit cards, PayPal, and select cryptocurrencies. All payments are processed securely through our encrypted payment system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] py-10"><div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-auto -bottom-2/4 md:left-40"></div>
+<div class="relative box-border gap-x-4 grid grid-cols-none max-w-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full mx-auto px-2 rounded-lg md:grid-cols-[repeat(2,minmax(0px,1fr))] md:max-w-screen-xl"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><h4 class="text-3xl font-semibold box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-5xl md:leading-[62.4px] md:text-left">Affiliate <br class="text-3xl box-border leading-[39px] outline-[oklab(0.556_0_0_/_0.5)] text-center md:text-5xl md:leading-[62.4px] md:text-left" />
+ Program</h4>
+<p class="box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto md:text-left">Partner with Crypto Bureau and earn recurring commissions.</p>
+</div>
+<div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border gap-x-4 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 w-full border p-6 rounded-lg border-solid border-[oklab(0.999994_0.0000455678_0.0000200868_/_0.15)]"><div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+<p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Attractive commission structures and proven high conversion rates.</p>
+</div>
+<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mb-4"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+<p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Trusted, professionally backed offerings.</p>
+</div>
+<div class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4"><div class="box-border outline-[oklab(0.556_0_0_/_0.5)]"><img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-41.svg" alt="Icon" class="text-yellow-600 box-border h-8 outline-[oklab(0.556_0_0_/_0.5)] w-8 border p-1.5 rounded-[3.35544e+07px] border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)]" />
+</div>
+<p class="box-border outline-[oklab(0.556_0_0_/_0.5)]">Extensive affiliate support, including tracking tools, promotional materials, branded assets, and exclusive incentives.</p>
+</div>
+</div>
+</div>
+</section>
+  <!-- Newsletter Section -->
+  <section class="relative box-border outline-[oklab(0.556_0_0_/_0.5)] px-4 py-28 animate-on-scroll">
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[350px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-0 top-2/4"></div>
+    <div class="relative bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.05)] box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full border mx-auto py-20 rounded-lg border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)] md:max-w-screen-xl hover-glow">
+      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)] px-4">
+        <h4 class="text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase">Subscribe to Our Newsletter</h4>
+        <p class="box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Receive expert-driven insights, actionable trade ideas, and exclusive offers directly from our professional analysts.</p>
+      </div>
+      <div class="items-start box-border gap-x-4 flex flex-col justify-center max-w-2xl outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-8 mx-auto px-4 md:flex-row">
+        <div class="box-border grow outline-[oklab(0.556_0_0_/_0.5)] w-full md:w-auto">
+          <input id="newsletter-email" placeholder="Enter your email" class="text-base bg-[oklab(0.63716_0.0295808_0.126768_/_0.05)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] box-border flex h-9 leading-6 outline-[oklab(0.556_0_0_/_0.5)] w-full border px-3 py-[18px] rounded-lg border-solid border-[oklab(0.63716_0.0295808_0.126768_/_0.2)] md:text-sm md:leading-5 focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" />
+          <p class="text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)] mt-1">We care about your data in our <a href="#" class="box-border outline-[oklab(0.556_0_0_/_0.5)] underline hover:text-yellow-400 transition-colors">privacy policy</a>.</p>
+        </div>
+        <button id="subscribe-btn" class="relative text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-10 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-full mx-0 px-4 py-2 rounded-lg md:w-36 md:mx-auto hover-scale hover-glow">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative bg-[oklab(0.647343_0.0361072_0.130215_/_0.1)] box-border outline-[oklab(0.556_0_0_/_0.5)] py-28 animate-on-scroll">
+    <div class="absolute bg-[oklab(0.76655_-0.125209_0.0272859_/_0.5)] box-border blur-[250px] h-96 outline-[oklab(0.556_0_0_/_0.5)] w-96 left-2/4 top-0"></div>
+    <div class="relative box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto md:max-w-screen-xl">
+      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
+        <h4 class="text-3xl font-semibold box-border leading-9 outline-[oklab(0.556_0_0_/_0.5)] text-center uppercase md:text-4xl md:leading-10">Join Crypto Bureau Today</h4>
+        <p class="box-border max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] text-center mt-4 mx-auto">Whether executing your first trade or refining advanced strategies, Crypto Bureau equips you with proven methodologies, educational resources, and supportive community engagement necessary for crypto market success.</p>
+      </div>
+      <div class="items-center box-border flex flex-col justify-center max-w-screen-md outline-[oklab(0.556_0_0_/_0.5)] mt-8 mx-auto md:flex-row">
+        <p class="font-semibold box-border outline-[oklab(0.556_0_0_/_0.5)] text-center md:text-end">Start Your Crypto Journey Today. Achieve Consistent Results.</p>
+        <button class="relative text-sm font-medium items-center bg-[oklch(0.922_0_0)] bg-[linear-gradient(rgb(183,127,14),rgb(85,52,0))] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0.05)_0px_1px_2px_0px] gap-x-2 flex shrink-0 h-10 justify-center leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 text-center text-nowrap w-48 mt-2 mx-0 px-4 py-2 rounded-lg md:mx-auto hover-scale hover-glow animate-pulse-glow">Join Crypto Bureau</button>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+<!-- Footer -->
+<section class="bg-gray-950 box-border outline-[oklab(0.556_0_0_/_0.5)] py-10">
+  <footer class="box-border max-w-none outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto px-4 md:max-w-screen-xl">
+    <div class="box-border gap-x-4 grid grid-cols-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 md:gap-x-20 md:grid-cols-[55%_40%] md:gap-y-20">
+      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
+        <div class="items-center box-border gap-x-6 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-6">
+          <a href="/" class="relative text-[oklch(0.922_0_0)] items-center box-border gap-x-2 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 z-20 hover-scale">
+            <img alt="Crypto Bureau Logo" src="https://c.animaapp.com/me8avijrFdPAfI/assets/crypto-bureau-logo.7636489a.svg" class="text-transparent aspect-[auto_76_/_60] box-border max-w-full outline-[oklab(0.556_0_0_/_0.5)] w-14" />
+            <p class="text-xl font-semibold bg-clip-text bg-[linear-gradient(90.14deg,rgb(250,232,196)_-6.04%,rgb(255,171,8)_72.81%)] box-border leading-7 outline-[oklab(0.556_0_0_/_0.5)]">Crypto Bureau</p>
+          </a>
+        </div>
+        <p class="text-[oklab(0.999994_0.0000455677_0.0000200868_/_0.8)] text-sm box-border leading-[21px] outline-[oklab(0.556_0_0_/_0.5)] mt-4">The content provided by Crypto Bureau—including videos, articles, comments, and forecasts—is for informational and educational purposes only and not financial or professional advice. Cryptocurrency trading involves substantial risk, including significant potential financial losses.</p>
+      </div>
+      <div class="box-border outline-[oklab(0.556_0_0_/_0.5)]">
+        <p class="items-center box-border gap-x-4 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 mt-4">
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-42.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+          <span class="text-sm box-border block leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Company, 234 East, 19th Street, St. London 10001</span>
+        </p>
+        <div class="items-center box-border gap-x-8 block outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-4 md:flex">
+          <p class="box-border gap-x-4 flex min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 md:min-h-[auto] md:min-w-[auto]">
+            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-43.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+            <span class="box-border block outline-[oklab(0.556_0_0_/_0.5)]">0000000000000</span>
+          </p>
+          <p class="box-border gap-x-4 flex min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] gap-y-4 md:min-h-[auto] md:min-w-[auto]">
+            <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-44.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-[33px]" />
+            <span class="box-border block outline-[oklab(0.556_0_0_/_0.5)]">(123) 456-7890</span>
+          </p>
+        </div>
+        <p class="items-center box-border gap-x-8 flex outline-[oklab(0.556_0_0_/_0.5)] gap-y-8 mt-12">
+          <span class="text-[oklab(0.999994_0.0000455678_0.0000200868_/_0.75)] text-sm box-border block leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Social Media</span>
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-45.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-46.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-47.svg" alt="Icon" class="box-border h-[33px] outline-[oklab(0.556_0_0_/_0.5)] w-8 hover-scale cursor-pointer" />
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-48.svg" alt="Icon" class="box-border h-[18px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
+          <img src="https://c.animaapp.com/me8avijrFdPAfI/assets/icon-49.svg" alt="Icon" class="box-border h-[25px] outline-[oklab(0.556_0_0_/_0.5)] w-6 hover-scale cursor-pointer" />
+        </p>
+      </div>
+    </div>
+    <div class="bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.15)] box-border h-[1.5px] outline-[oklab(0.556_0_0_/_0.5)] w-full mx-auto my-10"></div>
+    <div class="items-center box-border flex justify-between outline-[oklab(0.556_0_0_/_0.5)]">
+      <nav aria-label="Main" class="relative items-center box-border hidden basis-[0%] grow justify-center max-w-max min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:flex md:min-h-[auto] md:min-w-[auto]">
+        <div class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] md:min-h-[auto] md:min-w-[auto]">
+          <ul class="items-center box-border gap-x-2 flex basis-[0%] grow justify-center list-none outline-[oklab(0.556_0_0_/_0.5)] gap-y-2 pl-0">
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/market-research" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">Market Research & Analysis</a>
+            </li>
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/academy" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">Crypto Bureau Academy</a>
+            </li>
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/xlab-results" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">Xlab Results</a>
+            </li>
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/memberships" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">Memberships</a>
+            </li>
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/testimonials" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">Testimonials</a>
+            </li>
+            <li class="relative box-border min-h-0 min-w-0 outline-[oklab(0.556_0_0_/_0.5)] text-left md:min-h-[auto] md:min-w-[auto]">
+              <a href="/about" class="text-sm font-medium box-border gap-x-1 flex flex-col leading-5 outline-[oklab(0.556_0_0_/_0.5)] gap-y-1 px-2 py-1.5 rounded-md hover:text-yellow-400 transition-colors">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <p class="text-sm box-border leading-5 outline-[oklab(0.556_0_0_/_0.5)]">Copyright ©2025</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile Menu Functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+  function openMobileMenu() {
+    mobileMenu.classList.add('open');
+    mobileMenuOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenuFunc() {
+    mobileMenu.classList.remove('open');
+    mobileMenuOverlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  mobileMenuBtn.addEventListener('click', openMobileMenu);
+  closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+  mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
+
+  // Mobile Menu Dropdowns
+  const mobileDropdowns = document.querySelectorAll('#mobile-menu .dropdown');
+  mobileDropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector('button');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const icon = button.querySelector('svg');
+    
+    button.addEventListener('click', () => {
+      const isOpen = menu.style.display === 'block';
+      menu.style.display = isOpen ? 'none' : 'block';
+      icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  });
+
+  // Scroll Animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+
+ 
+  
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add loading animation to buttons
+  document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
+      if (!this.classList.contains('loading')) {
+        this.classList.add('loading');
+        setTimeout(() => {
+          this.classList.remove('loading');
+        }, 1000);
+      }
+    });
+  });
+
+  // Parallax effect for background elements
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.animate-float');
+    
+    parallaxElements.forEach(element => {
+      const speed = 0.5;
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+
+  // Add intersection observer for progress bars
+  const progressBars = document.querySelectorAll('.bg-\\[oklch\\(0\\.681_0\\.162_75\\.834\\)\\]');
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.classList.contains('w-1/5') ? '20%' : '90%';
+        entry.target.style.transition = 'width 2s ease-out';
+      }
+    });
+  }, { threshold: 0.5 });
+
+  progressBars.forEach(bar => {
+    progressObserver.observe(bar);
+  });
+
+  // Add typing effect to main heading
+  const mainHeading = document.querySelector('h1');
+  if (mainHeading) {
+    const text = mainHeading.textContent;
+    mainHeading.textContent = '';
+    let i = 0;
+    
+    function typeWriter() {
+      if (i < text.length) {
+        mainHeading.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    
+    setTimeout(typeWriter, 1000);
+  }
+
+  // Add hover effects to cards
+  document.querySelectorAll('.hover-scale').forEach(element => {
+    element.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+    });
+    
+    element.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+  });
+
+  // Newsletter form submission
+  const newsletterForm = document.getElementById('newsletter-email');
+  const subscribeBtn = document.getElementById('subscribe-btn');
+  
+  if (newsletterForm && subscribeBtn) {
+    subscribeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = newsletterForm.value;
+      
+      if (email && email.includes('@')) {
+        this.textContent = 'Subscribed!';
+        this.style.backgroundColor = '#10b981';
+        newsletterForm.value = '';
+        
+        setTimeout(() => {
+          this.textContent = 'Subscribe';
+          this.style.backgroundColor = '';
+        }, 3000);
+      } else {
+        newsletterForm.style.borderColor = '#ef4444';
+        setTimeout(() => {
+          newsletterForm.style.borderColor = '';
+        }, 2000);
+      }
+    });
+  }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.getElementById("testimonials-track");
+  const prevBtn = document.getElementById("testimonials-prev");
+  const nextBtn = document.getElementById("testimonials-next");
+
+  const slides = Array.from(track.children);
+  const slideWidth = slides[0].getBoundingClientRect().width;
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Loop back to start
+    }
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = slides.length - 1; // Loop to last
+    }
+    updateCarousel();
+  });
+
+  // Optional: Auto-play every 5s
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }, 5000);
+
+  // Make carousel responsive on resize
+  window.addEventListener("resize", () => {
+    const newWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentIndex * newWidth}px)`;
+  });
+});
+</script>
+
+
+<script>
+  // এই কোডটি DOMContentLoaded ইভেন্টের পরে এক্সিকিউট হবে, যাতে HTML পুরোপুরি লোড হয়ে যায়।
+document.addEventListener('DOMContentLoaded', () => {
+  // সকল .faq-toggle বাটনের জন্য একটি NodeList নির্বাচন করা হয়েছে।
+  const faqToggles = document.querySelectorAll('.faq-toggle');
+
+  // প্রতিটি faqToggle-এর জন্য একটি ইভেন্ট লিসনার যোগ করা হচ্ছে।
+  faqToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      // বর্তমান FAQ আইটেম (div) বের করা হয়েছে।
+      const faqItem = toggle.closest('div');
+      
+      // faq-content এবং faq-icon নির্বাচন করা হয়েছে।
+      const faqContent = faqItem.querySelector('.faq-content');
+      const faqIcon = faqItem.querySelector('.faq-icon');
+
+      // faq-content এর জন্য হাইট সেট করা।
+      // যদি এটি লুকানো থাকে, তবে হাইট হবে scrollHeight, না হলে 0।
+      if (faqContent.style.maxHeight) {
+        // যদি কন্টেন্ট খোলা থাকে, তবে এটি বন্ধ করে দেওয়া হবে।
+        faqContent.style.maxHeight = null;
+        faqContent.style.paddingTop = '0';
+        faqContent.style.paddingBottom = '0';
+        faqIcon.style.transform = 'rotate(0deg)';
+      } else {
+        // যদি কন্টেন্ট বন্ধ থাকে, তবে এটি খোলা হবে।
+        // scrollHeight ব্যবহার করে কন্টেন্টের সঠিক হাইট বের করা হয়েছে।
+        faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
+        faqContent.style.paddingTop = '1rem';
+        faqContent.style.paddingBottom = '1rem';
+        faqIcon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // এই CSS স্টাইলগুলো faq-content-এর জন্য যোগ করতে হবে।
+  // transition: all 0.3s ease-out; এই ট্রানজিশনটি কন্টেন্টকে মসৃণভাবে খুলতে ও বন্ধ করতে সাহায্য করে।
+  // maxHeight: 0; এবং overflow: hidden; প্রাথমিকভাবে কন্টেন্টটি লুকিয়ে রাখবে।
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .faq-content {
+      max-height: 0;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      overflow: hidden;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  `;
+  document.head.appendChild(style);
+
+});
+
+
+</script>
+</body>
+</html>
